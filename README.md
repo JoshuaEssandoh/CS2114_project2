@@ -25,9 +25,8 @@ Jacob and Josh will be responsible for overseeing the implementation of the genr
 
 
 
-
-
-
 Attribution:
 Song.java - Andersson Galvez - Worked on the class structure, fields, and getter methods. Utilized GenAI to implement and format the IllegalArgumentException validation logic within the constructor.
 SongTest.java - Andersson Galvez - Worked on the test class for normal and bad-input cases. Utilized GenAI to brainstorm and implement the bad-input edge cases.
+Playlist.java - Jacob Dial - Wrote and implemented the Playlist class, including playlist management, song removal, shuffle, and recommendation functionality. Used GenAI assistance for code review and implementation guidance.
+PlaylistTest.java - Jacob Dial - Wrote and revised unit tests for the Playlist class, testing normal behavior, invalid inputs, and boundary cases. Used GenAI assistance to help identify test cases and improve test coverage.
