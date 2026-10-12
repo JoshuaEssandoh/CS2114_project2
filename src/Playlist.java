@@ -2,15 +2,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-public class Playlist
-{
+public class Playlist {
     private String name;
     private LinkedChain<Song> songs;
 
-    public Playlist(String name)
-    {
-        if (name == null || name.trim().isEmpty())
-        {
+    public Playlist(String name) {
+        if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Must have a playlist name");
         }
 
@@ -20,46 +17,37 @@ public class Playlist
     }
 
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
 
-    public void addSong(Song song)
-    {
-        if (song == null)
-        {
+    public void addSong(Song song) {
+        if (song == null) {
             throw new IllegalArgumentException("Cannot add a null song");
         }
         songs.addToEnd(song);
     }
 
 
-    public void removeSong(Song song)
-    {
-        if (song == null)
-        {
+    public void removeSong(Song song) {
+        if (song == null) {
             throw new IllegalArgumentException("Song cannot be null");
         }
-        if (!songs.remove(song))
-        {
+        if (!songs.remove(song)) {
             throw new IllegalArgumentException("Song is not in playlist");
         }
     }
 
 
-    public Song removeSongAt(int index)
-    {
+    public Song removeSongAt(int index) {
         checkIndex(index);
 
         Song removedSong = songs.get(index);
         LinkedChain<Song> updatedSongs = new LinkedChain<Song>();
 
-        for (int i = 0; i < songs.size(); i++)
-        {
-            if (i != index)
-            {
+        for (int i = 0; i < songs.size(); i++) {
+            if (i != index) {
                 updatedSongs.addToEnd(songs.get(i));
             }
         }
@@ -70,50 +58,41 @@ public class Playlist
     }
 
 
-    public Song getSong(int index)
-    {
+    public Song getSong(int index) {
         checkIndex(index);
         return songs.get(index);
     }
 
 
-    public boolean containsSong(Song song)
-    {
-        if (song == null)
-        {
+    public boolean containsSong(Song song) {
+        if (song == null) {
             return false;
         }
         return songs.contains(song);
     }
 
 
-    public int getSize()
-    {
+    public int getSize() {
         return songs.size();
     }
 
 
-    public boolean isEmpty()
-    {
+    public boolean isEmpty() {
         return songs.isEmpty();
     }
 
 
-    public LinkedChain<Song> getSongs()
-    {
+    public LinkedChain<Song> getSongs() {
         return songs;
     }
 
 
-    public Song getRandomSong(Random random)
-    {
-        if (random == null)
-        {
+    public Song getRandomSong(Random random) {
+        if (random == null) {
             throw new IllegalArgumentException(
                 "Random generator cannot be null");
         }
-        if (songs.isEmpty())
-        {
+        if (songs.isEmpty()) {
             throw new IllegalStateException(
                 "Cannot select a song from an empty playlist");
         }
@@ -123,18 +102,15 @@ public class Playlist
     }
 
 
-    public void shuffle(Random random)
-    {
-        if (random == null)
-        {
+    public void shuffle(Random random) {
+        if (random == null) {
             throw new IllegalArgumentException(
                 "Random generator can't be null");
         }
 
         ArrayList<Song> shuffledSongs = new ArrayList<Song>();
 
-        for (int i = 0; i < songs.size(); i++)
-        {
+        for (int i = 0; i < songs.size(); i++) {
             shuffledSongs.add(songs.get(i));
         }
 
@@ -142,8 +118,7 @@ public class Playlist
 
         LinkedChain<Song> shuffledChain = new LinkedChain<Song>();
 
-        for (Song song : shuffledSongs)
-        {
+        for (Song song : shuffledSongs) {
             shuffledChain.addToEnd(song);
 
         }
@@ -151,12 +126,10 @@ public class Playlist
     }
 
 
-    public LinkedChain<Song> getQueue()
-    {
+    public LinkedChain<Song> getQueue() {
         LinkedChain<Song> queue = new LinkedChain<Song>();
 
-        for (int i = 0; i < songs.size(); i++)
-        {
+        for (int i = 0; i < songs.size(); i++) {
             queue.addToEnd(songs.get(i));
         }
 
@@ -164,13 +137,10 @@ public class Playlist
     }
 
 
-    private void checkIndex(int index)
-    {
-        if (index < 0 || index >= songs.size())
-        {
-            throw new IndexOutOfBoundsException(
-                "Song index " + index + " is out of bounds for playlist size "
-                    + songs.size());
+    private void checkIndex(int index) {
+        if (index < 0 || index >= songs.size()) {
+            throw new IndexOutOfBoundsException("Song index " + index
+                + " is out of bounds for playlist size " + songs.size());
         }
     }
 
