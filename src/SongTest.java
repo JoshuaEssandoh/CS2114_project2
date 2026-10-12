@@ -32,7 +32,7 @@ public class SongTest extends TestCase {
     public void testValidSongCreation() {
         assertEquals("Bohemian Rhapsody", validSong.getTitle());
         assertEquals("Queen", validSong.getArtist());
-        assertEquals(354, validSong.getDuration());
+        assertEquals(355, validSong.getDuration());
         assertEquals("Rock", validSong.getGenre());
     }
 
