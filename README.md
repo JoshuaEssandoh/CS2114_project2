@@ -3,9 +3,21 @@ How to Compile and Run:
 
 Reflection:
 
-Andersson - In our original validation table, we planned to handle empty song titles and negative durations within the SoundStack.AddSong() method. I modified the Song class to throw IllegalArgumentExeption directly inside its constructor. 
+Changes from the Specification
 
+In our original validation table, we planned to handle empty song titles and negative durations within the SoundStack.AddSong() method. However, we changed our approach by placing this validation directly in the Song class constructor. The constructor now throws an IllegalArgumentException when a song is created with invalid information. This approach keeps validation close to the data being validated and prevents invalid Song objects from being created. We also added another constructor that does not require a duration to support the recommendation engine.
 
+Changes to LinkedChain
+
+We used the provided LinkedChain class unchanged. Its existing methods were sufficient to support our application’s playlist functionality, so we did not need to modify or extend its implementation.
+
+Resolving Unknowns
+
+One of the main unknowns identified in our original scope was how to implement Jsoup. We figured out how to incorporate Jsoup into our project, helping us address that uncertainty and better understand how to use the library in our application.
+
+Current Limitations
+
+At this stage, all of our MVP features are working as intended. We have not identified any outstanding issues that prevent the MVP from functioning. However, additional testing and future stretch-goal development may reveal edge cases or areas for improvement.
 
 
 
