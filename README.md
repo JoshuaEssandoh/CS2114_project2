@@ -5,7 +5,7 @@ How to Compile and Run:
 3. Clone this Git repository and transfer it to your local repository.
 4. Run SoundStack.java as a Java Application
 
-Reflection:
+### Reflection:
 
 Changes from the Specification
 
