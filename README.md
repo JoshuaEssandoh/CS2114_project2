@@ -1,12 +1,27 @@
 How to Compile and Run:
-
+### Setup
+1. Download Jsoup in your browser and transfer it into a lib folder within your project.
+2. Initialize all Jsoup imports in your Java library.
+3. Clone this Git repository and transfer it to your local repository.
+4. Run SoundStack.java as a Java Application
 
 Reflection:
 
-Andersson - In our original validation table, we planned to handle empty song titles and negative durations within the SoundStack.AddSong() method. I modified the Song class to throw IllegalArgumentExeption directly inside its constructor. 
+Changes from the Specification
 
 Colin - In the original specification document, we ended up matching the core four and especially on my end. I did change a few things, however, like UserProfile I just made into a SoundStack constructor normally to shorten code without issue and to remove that bug. I also added getPlaylistCount(), findPlaylist(String), addSong(int, Song), removeSong(int, int), run(), and some private helpers that just make the program run smoother and generally make sense. O(1) was the original complexity, changed into O(n). Nothing changed in LinkedChain. Our unknowns were solved easily, and the menu does not expose every tiny thing Playlist can do. RecommendationEngine isn't done either, and there is no menu path for some spec bad-input cases. Playlist.removeSong(Song) and viewing a single song aren't reachable from the menu. They're only covered by direct exception tests.
 
+Changes to LinkedChain
+
+We used the provided LinkedChain class unchanged. Its existing methods were sufficient to support our application’s playlist functionality, so we did not need to modify or extend its implementation.
+
+Resolving Unknowns
+
+One of the main unknowns identified in our original scope was how to implement Jsoup. We figured out how to incorporate Jsoup into our project, helping us address that uncertainty and better understand how to use the library in our application.
+
+Current Limitations
+
+At this stage, all of our MVP features are working as intended. We have not identified any outstanding issues that prevent the MVP from functioning. However, additional testing and future stretch-goal development may reveal edge cases or areas for improvement.
 
 
 
