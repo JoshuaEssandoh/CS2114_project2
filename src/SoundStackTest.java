@@ -12,7 +12,6 @@ public class SoundStackTest extends TestCase {
     private Song songB;
     private SoundStack lastApp; // app used by the last runWithInput call
 
-
     /**
      * Sets up the test fixtures before each test.
      */
@@ -28,7 +27,7 @@ public class SoundStackTest extends TestCase {
      * that was printed.
      *
      * @param userInput
-     * the simulated keystrokes (use \n for Enter)
+     *            the simulated keystrokes (use \n for Enter)
      * @return all console output produced by the run
      */
     private String runWithInput(String userInput) {
@@ -37,6 +36,7 @@ public class SoundStackTest extends TestCase {
         lastApp.run();
         return systemOut().getHistory();
     }
+
 
     /**
      * Default constructor uses the default name and starts empty.
@@ -97,6 +97,7 @@ public class SoundStackTest extends TestCase {
             // expected
         }
     }
+
 
     /**
      * A valid playlist is created and stored.
@@ -173,6 +174,7 @@ public class SoundStackTest extends TestCase {
         assertEquals(0, stack.getPlaylistCount());
     }
 
+
     /**
      * Each valid index returns the right playlist.
      */
@@ -228,6 +230,7 @@ public class SoundStackTest extends TestCase {
             // expected
         }
     }
+
 
     /**
      * Removing the first playlist.
@@ -315,6 +318,7 @@ public class SoundStackTest extends TestCase {
         }
     }
 
+
     /**
      * Finds a playlist by exact name.
      */
@@ -358,6 +362,7 @@ public class SoundStackTest extends TestCase {
     public void testFindPlaylistWhenEmpty() {
         assertNull(stack.findPlaylist("Anything"));
     }
+
 
     /**
      * A song is added to a playlist.
@@ -448,6 +453,7 @@ public class SoundStackTest extends TestCase {
             // expected
         }
     }
+
 
     /**
      * Removes the first song and returns it.
@@ -708,6 +714,7 @@ public class SoundStackTest extends TestCase {
         String out = runWithInput("2\n0\n");
         assertTrue(out.contains("You have no playlists yet."));
     }
+
 
     /**
      * Quitting right away.

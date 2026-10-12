@@ -24,9 +24,9 @@ public class SoundStack {
      * Creates a SoundStack profile with the given username.
      *
      * @param username
-     * the user's name; must not be null or blank
+     *            the user's name; must not be null or blank
      * @throws IllegalArgumentException
-     * if username is null or blank
+     *             if username is null or blank
      */
     public SoundStack(String username) {
         this(username, new Scanner(System.in));
@@ -41,6 +41,7 @@ public class SoundStack {
         this.playlists = new LinkedChain<Playlist>();
         this.input = input;
     }
+
 
     /**
      * Gets the username.
@@ -66,10 +67,10 @@ public class SoundStack {
      * Creates a new playlist and adds it to the end of the playlist chain.
      *
      * @param name
-     * the playlist name; must not be null or blank
+     *            the playlist name; must not be null or blank
      * @return the new playlist
      * @throws IllegalArgumentException
-     * if the name is null or blank
+     *             if the name is null or blank
      */
     public Playlist createPlaylist(String name) {
         Playlist newPlaylist = new Playlist(name);
@@ -82,10 +83,10 @@ public class SoundStack {
      * Removes the playlist at the given index.
      *
      * @param index
-     * the index of the playlist
+     *            the index of the playlist
      * @return the removed playlist
      * @throws IndexOutOfBoundsException
-     * if the index is invalid
+     *             if the index is invalid
      */
     public Playlist removePlaylist(int index) {
         Playlist toRemove = playlists.get(index);
@@ -98,10 +99,10 @@ public class SoundStack {
      * Gets the playlist at the given index.
      *
      * @param index
-     * the index of the playlist
+     *            the index of the playlist
      * @return the playlist
      * @throws IndexOutOfBoundsException
-     * if the index is invalid
+     *             if the index is invalid
      */
     public Playlist getPlaylist(int index) {
         return playlists.get(index);
@@ -112,7 +113,7 @@ public class SoundStack {
      * Finds a playlist by name, ignoring case.
      *
      * @param name
-     * the name to look for
+     *            the name to look for
      * @return the matching playlist, or null if none is found
      */
     public Playlist findPlaylist(String name) {
@@ -133,9 +134,9 @@ public class SoundStack {
      * Adds a song to the playlist at the given index.
      *
      * @param playlistIndex
-     * the zero-based index of the playlist
+     *            the zero-based index of the playlist
      * @param song
-     * the song to add
+     *            the song to add
      */
     public void addSong(int playlistIndex, Song song) {
         getPlaylist(playlistIndex).addSong(song);
@@ -146,14 +147,15 @@ public class SoundStack {
      * Removes a song from the playlist at the given index.
      *
      * @param playlistIndex
-     * the zero-based index of the playlist
+     *            the zero-based index of the playlist
      * @param songIndex
-     * the zero-based index of the song
+     *            the zero-based index of the song
      * @return the removed song
      */
     public Song removeSong(int playlistIndex, int songIndex) {
         return getPlaylist(playlistIndex).removeSongAt(songIndex);
     }
+
 
     /**
      * Runs the main menu loop until the user quits.
@@ -207,15 +209,15 @@ public class SoundStack {
         System.out.println("0. Quit");
     }
 
-        // Re-prompt until the name is valid
+
+    // Re-prompt until the name is valid
     private void handleCreatePlaylist() {
         while (true) {
             System.out.print("Enter a playlist name: ");
             String name = input.nextLine();
             try {
                 createPlaylist(name);
-                System.out.println("Created playlist \"" + name.trim()
-                    + "\".");
+                System.out.println("Created playlist \"" + name.trim() + "\".");
                 return;
             }
             catch (IllegalArgumentException e) {
@@ -232,8 +234,7 @@ public class SoundStack {
             return;
         }
         Playlist removed = removePlaylist(index);
-        System.out.println("Removed playlist \"" + removed.getName()
-            + "\".");
+        System.out.println("Removed playlist \"" + removed.getName() + "\".");
     }
 
 
@@ -245,8 +246,8 @@ public class SoundStack {
         System.out.println("Your playlists:");
         for (int i = 0; i < playlists.size(); i++) {
             Playlist p = playlists.get(i);
-            System.out.println((i + 1) + ". " + p.getName() + " ("
-                + p.getSize() + " songs)");
+            System.out.println((i + 1) + ". " + p.getName() + " (" + p.getSize()
+                + " songs)");
         }
     }
 
@@ -309,11 +310,12 @@ public class SoundStack {
         }
     }
 
+
     /**
      * Shows the playlists and asks the user to pick one.
      *
      * @return the zero-based index of the chosen playlist, or -1 if there
-     * are no playlists or the choice was invalid
+     *         are no playlists or the choice was invalid
      */
     private int choosePlaylist() {
         if (playlists.isEmpty()) {
@@ -375,6 +377,7 @@ public class SoundStack {
         }
         return line.trim();
     }
+
 
     /**
      * Starts the SoundStack application.
