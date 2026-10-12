@@ -24,6 +24,7 @@ public class SongTest extends TestCase {
         validSong = new Song("Bohemian Rhapsody", "Queen", 355, "Rock");
     }
 
+
     // ----------------------------------------------------------
     /**
      * Tests that a valid song stores its fields correctly.
@@ -35,6 +36,7 @@ public class SongTest extends TestCase {
         assertEquals("Rock", validSong.getGenre());
     }
 
+
     // ----------------------------------------------------------
     /**
      * Tests the bad input case of providing an empty title.
@@ -42,12 +44,14 @@ public class SongTest extends TestCase {
     public void testEmptyTitleSong() {
         try {
             validSong = new Song("", "Queen", 355, "Rock");
-            fail("Expected an IllegalArgumentException to be thrown for empty titles.");
+            fail("Expected an IllegalArgumentException to be thrown for "
+                + "empty titles.");
         }
         catch (IllegalArgumentException e) {
             assertTrue(e.getMessage().contains("empty"));
         }
     }
+
 
     // ----------------------------------------------------------
     /**
@@ -56,12 +60,14 @@ public class SongTest extends TestCase {
     public void testEmptyArtistSong() {
         try {
             validSong = new Song("Bohemian Rhapsody", "   ", 355, "Rock");
-            fail("Expected an IllegalArgumentException to be thrown for empty artists.");
+            fail("Expected an IllegalArgumentException to be thrown for "
+                + "empty artists.");
         }
         catch (IllegalArgumentException e) {
             assertTrue(e.getMessage().contains("empty"));
         }
     }
+
 
     // ----------------------------------------------------------
     /**
@@ -70,20 +76,23 @@ public class SongTest extends TestCase {
     public void testInvalidDurationSong() {
         try {
             validSong = new Song("Bohemian Rhapsody", "Queen", 0, "Rock");
-            fail("Expected an IllegalArgumentException to be thrown for zero duration.");
+            fail("Expected an IllegalArgumentException to be thrown for "
+                + "zero duration.");
         }
         catch (IllegalArgumentException e) {
             assertTrue(e.getMessage().contains("greater than zero"));
         }
-        
+
         try {
             validSong = new Song("Bohemian Rhapsody", "Queen", -10, "Rock");
-            fail("Expected an IllegalArgumentException to be thrown for negative duration.");
+            fail("Expected an IllegalArgumentException to be thrown for "
+                + "negative duration.");
         }
         catch (IllegalArgumentException e) {
             assertTrue(e.getMessage().contains("greater than zero"));
         }
     }
+
 
     // ----------------------------------------------------------
     /**
@@ -92,12 +101,14 @@ public class SongTest extends TestCase {
     public void testEmptyGenreSong() {
         try {
             validSong = new Song("Bohemian Rhapsody", "Queen", 355, "");
-            fail("Expected an IllegalArgumentException to be thrown for empty genres.");
+            fail("Expected an IllegalArgumentException to be thrown for "
+                + "empty genres.");
         }
         catch (IllegalArgumentException e) {
             assertTrue(e.getMessage().contains("empty"));
         }
     }
+
 
     // ----------------------------------------------------------
     /**
@@ -111,15 +122,17 @@ public class SongTest extends TestCase {
         assertTrue(output.contains("Rock"));
     }
 
+
     // ----------------------------------------------------------
     /**
      * Tests the equals method with matching and non-matching objects.
      */
     public void testEquals() {
-        Song duplicateSong = new Song("Bohemian Rhapsody", "Queen", 355, "Rock");
+        Song duplicateSong = new Song("Bohemian Rhapsody", "Queen", 355,
+            "Rock");
         Song differentSong = new Song("Numb", "Linkin Park", 187, "Rock");
         String notASong = "This is a string, not a song";
-        
+
         assertTrue(validSong.equals(duplicateSong));
         assertFalse(validSong.equals(differentSong));
         assertFalse(validSong.equals(null));
