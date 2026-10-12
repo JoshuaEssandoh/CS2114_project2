@@ -32,3 +32,5 @@ SongTest.java - Andersson Galvez - Worked on the test class for normal and bad-i
 
 Playlist.java - Jacob Dial - Wrote and implemented the Playlist class, including playlist management, song removal, shuffle, and recommendation functionality. Used GenAI assistance for code review and implementation guidance.
 PlaylistTest.java - Jacob Dial - Wrote and revised unit tests for the Playlist class, testing normal behavior, invalid inputs, and boundary cases. Used GenAI assistance to help identify test cases and improve test coverage.
+
+RecommendationEngine.java - Joshua Essandoh - Worked on the recommendation system and class structure. Based it on the Wikipedia page of Michael Jackson's album Thriller. Uses Jsoup to parse data from the internet and import Songs from a scraped playlist to the user's playlist.
