@@ -1,5 +1,9 @@
 How to Compile and Run:
-
+### Setup
+1. Download Jsoup in your browser and transfer it into a lib folder within your project.
+2. Initialize all Jsoup imports in your Java library.
+3. Clone this Git repository and transfer it to your local repository.
+4. Run SoundStack.java as a Java Application
 
 Reflection:
 
