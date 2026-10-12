@@ -9,5 +9,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/CS2DataStructuresLib"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/CS2GraphWindowLib"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/CS2-Support"/>
+	<classpathentry kind="lib" path="lib/jsoup-1.23.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

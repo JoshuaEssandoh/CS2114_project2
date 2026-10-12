@@ -175,7 +175,8 @@ public class RecommendationEngine {
                 }
             }
             try {
-                Song song = new Song(title, "Michael Jackson", "Synth-pop");
+                Song song = new Song(title, "Michael Jackson", 358,
+                    "Synth-pop");
                 loadedSongs.addToEnd(song);
             }
             catch (IllegalArgumentException exception) {
