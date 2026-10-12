@@ -9,7 +9,7 @@ Reflection:
 
 Changes from the Specification
 
-Colin - In the original specification document, we ended up matching the core four and especially on my end. I did change a few things, however, like UserProfile I just made into a SoundStack constructor normally to shorten code without issue and to remove that bug. I also added getPlaylistCount(), findPlaylist(String), addSong(int, Song), removeSong(int, int), run(), and some private helpers that just make the program run smoother and generally make sense. O(1) was the original complexity, changed into O(n). Nothing changed in LinkedChain. Our unknowns were solved easily, and the menu does not expose every tiny thing Playlist can do. RecommendationEngine isn't done either, and there is no menu path for some spec bad-input cases. Playlist.removeSong(Song) and viewing a single song aren't reachable from the menu. They're only covered by direct exception tests.
+Colin - In the original specification document, we ended up matching the core four and especially on my end. I did change a few things, however, like UserProfile I just made into a SoundStack constructor normally to shorten code without issue and to remove that bug. I also added getPlaylistCount(), findPlaylist(String), addSong(int, Song), removeSong(int, int), run(), and some private helpers that just make the program run smoother and generally make sense. O(1) was the original complexity, changed into O(n). Nothing changed in LinkedChain. Our unknowns were solved easily, and the menu does not expose every tiny thing Playlist can do. There is no menu path for some spec bad-input cases. Playlist.removeSong(Song) and viewing a single song aren't reachable from the menu. They're only covered by direct exception tests.
 
 Changes to LinkedChain
 
