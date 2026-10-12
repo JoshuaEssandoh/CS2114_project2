@@ -1,3 +1,6 @@
+How to Compile and Run:
+
+
 Reflection:
 
 Andersson - In our original validation table, we planned to handle empty song titles and negative durations within the SoundStack.AddSong() method. I modified the Song class to throw IllegalArgumentExeption directly inside its constructor. 
