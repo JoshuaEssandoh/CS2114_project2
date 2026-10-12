@@ -15,8 +15,12 @@ Andersson - In our original validation table, we planned to handle empty song ti
 
 Next Steps:
 
-Andersson -  The Song class is complete and tested. My next step is to work with the SoundStack class to ensure the SoundStack.AddSong() method properly wraps the Song instantiation in a try-catch block. Additionally, I will need to implement a display formatter (either in Song.toString() or the UI) to convert the integer duration into a standard "MM:SS" format for the user interface.
+Next Steps:
+We have completed all of our MVP goals, along with several stretch goals, including the recommendation engine and shuffle function. We still plan to implement the genre identifier stretch goal, which will allow users to retrieve a list of songs within a playlist that belong to a specified genre. However, we have decided to drop the user profile feature due to time constraints.
 
+To implement the genre identifier, we will add a method to the Playlist class that returns all songs matching a specified genre. We will also write additional tests to verify that the method returns the correct songs in different scenarios. These tests will cover matching genres, genres that are not present in the playlist, empty playlists, blank or null genre inputs, and playlists containing multiple genres.
+
+Jacob and Josh will be responsible for overseeing the implementation of the genre identifier and ensuring that its functionality meets the project requirements. Anderson will focus on working with the SoundStack class to ensure the SoundStack.AddSong() method properly wraps the Song instantiation in a try-catch block. Additionally, will implement a display formatter (either in Song.toString() or the UI) to convert the integer duration into a standard "MM:SS" format for the user interface. Colin will be testing and debugging the existing MVP features, ensuring that all public methods handle normal inputs, invalid inputs, and boundary cases correctly. Once these tasks are complete, the team will perform final integration testing to verify that all features work as expected before submission.
 
 
 
