@@ -29,12 +29,17 @@ public class SoundStack {
      * if username is null or blank
      */
     public SoundStack(String username) {
+        this(username, new Scanner(System.in));
+    }
+
+
+    public SoundStack(String username, Scanner input) {
         if (username == null || username.trim().isEmpty()) {
             throw new IllegalArgumentException("Username cannot be empty");
         }
         this.username = username.trim();
         this.playlists = new LinkedChain<Playlist>();
-        this.input = new Scanner(System.in);
+        this.input = input;
     }
 
     /**

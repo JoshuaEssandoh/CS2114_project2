@@ -32,9 +32,8 @@ public class SoundStackTest extends TestCase {
      * @return all console output produced by the run
      */
     private String runWithInput(String userInput) {
-        setIn(userInput);
         systemOut().clearHistory();
-        lastApp = new SoundStack("Tester");
+        lastApp = new SoundStack("Tester", new java.util.Scanner(userInput));
         lastApp.run();
         return systemOut().getHistory();
     }
@@ -527,15 +526,6 @@ public class SoundStackTest extends TestCase {
         }
     }
 
-    /**
-     * Quitting right away.
-     */
-    public void testRunQuitImmediately() {
-        String out = runWithInput("0\n");
-        assertTrue(out.contains("Welcome to SoundStack, Tester!"));
-        assertTrue(out.contains("Goodbye!"));
-    }
-
 
     /**
      * A menu number that does not exist.
@@ -719,13 +709,12 @@ public class SoundStackTest extends TestCase {
         assertTrue(out.contains("You have no playlists yet."));
     }
 
-
     /**
-     * The main method is exercised by quitting right away.
+     * Quitting right away.
      */
-    public void testMain() {
-        setIn("0\n");
-        SoundStack.main(new String[0]);
-        assertTrue(systemOut().getHistory().contains("Goodbye!"));
+    public void testRunQuitImmediately() {
+        String out = runWithInput("0\n");
+        assertTrue(out.contains("Welcome to SoundStack, Tester!"));
+        assertTrue(out.contains("Goodbye!"));
     }
 }
