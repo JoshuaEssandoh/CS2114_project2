@@ -14,8 +14,6 @@ Andersson - In our original validation table, we planned to handle empty song ti
 
 
 Next Steps:
-
-Next Steps:
 We have completed all of our MVP goals, along with several stretch goals, including the recommendation engine and shuffle function. We still plan to implement the genre identifier stretch goal, which will allow users to retrieve a list of songs within a playlist that belong to a specified genre. However, we have decided to drop the user profile feature due to time constraints.
 
 To implement the genre identifier, we will add a method to the Playlist class that returns all songs matching a specified genre. We will also write additional tests to verify that the method returns the correct songs in different scenarios. These tests will cover matching genres, genres that are not present in the playlist, empty playlists, blank or null genre inputs, and playlists containing multiple genres.
