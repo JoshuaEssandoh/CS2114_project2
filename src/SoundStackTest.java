@@ -724,4 +724,64 @@ public class SoundStackTest extends TestCase {
         assertTrue(out.contains("Welcome to SoundStack, Tester!"));
         assertTrue(out.contains("Goodbye!"));
     }
+    
+    /**
+     * Searching for songs by genre from the menu.
+     */
+    public void testRunFindSongsByGenre()
+    {
+        String out = runWithInput(
+            "1\nMix\n"
+            + "5\n1\nSong A\nArtist A\n180\nRock\n"
+            + "5\n1\nSong B\nArtist B\n200\nPop\n"
+            + "7\n1\nRock\n"
+            + "0\n");
+
+        assertTrue(out.contains("Songs in the Rock genre:"));
+        assertTrue(out.contains("Song A"));
+        assertFalse(out.contains("2. Song B by Artist B [Pop] (200s)"));
+        assertEquals(2, lastApp.getPlaylist(0).getSize());
+    }
+    
+
+    /**
+     * Searching for a genre with no matching songs.
+     */
+    public void testRunFindSongsByGenreNoMatches()
+    {
+        String out = runWithInput(
+            "1\nMix\n"
+            + "5\n1\nSong A\nArtist A\n180\nRock\n"
+            + "7\n1\nJazz\n"
+            + "0\n");
+
+        assertTrue(out.contains(
+            "No songs found in the Jazz genre."));
+        assertEquals(1, lastApp.getPlaylist(0).getSize());
+    }
+    
+    /**
+     * Searching by genre in an empty playlist.
+     */
+    public void testRunFindSongsByGenreEmptyPlaylist()
+    {
+        String out = runWithInput(
+            "1\nMix\n"
+            + "7\n1\n"
+            + "0\n");
+
+        assertTrue(out.contains("This playlist is empty."));
+    }
+    
+    /**
+     * Searching by genre when no playlists exist.
+     */
+    public void testRunFindSongsByGenreNoPlaylists()
+    {
+        String out = runWithInput("7\n0\n");
+
+        assertTrue(out.contains("You have no playlists yet."));
+    }
+    
+    
 }

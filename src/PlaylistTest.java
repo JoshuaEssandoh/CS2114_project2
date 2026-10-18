@@ -394,5 +394,116 @@ public class PlaylistTest
         assertTrue(playlist.isEmpty());
 
     }
+    
+
+    /**
+     * Tests finding songs by genre.
+     */
+    public void testGetSongsByGenre()
+    {
+        playlist.addSong(song1);
+        playlist.addSong(song2);
+        playlist.addSong(song3);
+
+        LinkedChain<Song> rockSongs =
+            playlist.getSongsByGenre("Rock");
+
+        assertEquals(1, rockSongs.size());
+        assertEquals(song2, rockSongs.get(0));
+    }
+
+
+    /**
+     * Tests that genre matching is case-insensitive.
+     */
+    public void testGetSongsByGenreCaseInsensitive()
+    {
+        playlist.addSong(song1);
+        playlist.addSong(song2);
+        playlist.addSong(song3);
+
+        LinkedChain<Song> popSongs =
+            playlist.getSongsByGenre("pOp");
+
+        assertEquals(1, popSongs.size());
+        assertEquals(song1, popSongs.get(0));
+    }
+
+
+    /**
+     * Tests finding multiple songs with the same genre.
+     */
+    public void testGetSongsByGenreMultipleMatches()
+    {
+        playlist.addSong(song1);
+
+        Song anotherPopSong =
+            new Song("Levitating", "Dua Lipa", 203, "Pop");
+
+        playlist.addSong(anotherPopSong);
+        playlist.addSong(song2);
+
+        LinkedChain<Song> popSongs =
+            playlist.getSongsByGenre("Pop");
+
+        assertEquals(2, popSongs.size());
+        assertEquals(song1, popSongs.get(0));
+        assertEquals(anotherPopSong, popSongs.get(1));
+    }
+
+    public void testGetSongsByGenreNoMatches()
+    {
+        playlist.addSong(song1);
+        playlist.addSong(song2);
+
+        LinkedChain<Song> jazzSongs =
+            playlist.getSongsByGenre("Jazz");
+
+        assertNotNull(jazzSongs);
+        assertTrue(jazzSongs.isEmpty());
+    }
+
+    public void testGetSongsByGenreEmptyPlaylist()
+    {
+        LinkedChain<Song> result =
+            playlist.getSongsByGenre("Rock");
+
+        assertNotNull(result);
+        assertTrue(result.isEmpty());
+    }
+
+
+    public void testGetSongsByGenreNull()
+    {
+        Exception exception = null;
+
+        try
+        {
+            playlist.getSongsByGenre(null);
+        }
+        catch (IllegalArgumentException e)
+        {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+    }
+
+
+    public void testGetSongsByGenreBlank()
+    {
+        Exception exception = null;
+
+        try
+        {
+            playlist.getSongsByGenre("   ");
+        }
+        catch (IllegalArgumentException e)
+        {
+            exception = e;
+        }
+
+        assertNotNull(exception);
+    }
 
 }

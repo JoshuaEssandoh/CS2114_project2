@@ -186,6 +186,9 @@ public class SoundStack {
             else if (choice == 6) {
                 handleRemoveSong();
             }
+            else if (choice == 7) {
+                handleFindSongsByGenre();
+            }
             else if (choice == 0) {
                 running = false;
                 System.out.println("Goodbye!");
@@ -206,6 +209,7 @@ public class SoundStack {
         System.out.println("4. View a playlist's songs");
         System.out.println("5. Add a song to a playlist");
         System.out.println("6. Remove a song from a playlist");
+        System.out.println("7. Find songs by genre");
         System.out.println("0. Quit");
     }
 
@@ -307,6 +311,36 @@ public class SoundStack {
         }
         catch (IndexOutOfBoundsException e) {
             System.out.println("Error: that song was not found.");
+        }
+    }
+    
+    private void handleFindSongsByGenre() {
+        int index = choosePlaylist();
+
+        if (index == -1) {
+            return;
+        }
+
+        Playlist selected = getPlaylist(index);
+
+        if (selected.isEmpty()) {
+            System.out.println("This playlist is empty.");
+            return;
+        }
+
+        String genre = readNonEmpty("Enter the genre to search for: ");
+
+        LinkedChain<Song> matchingSongs = selected.getSongsByGenre(genre);
+
+        if (matchingSongs.isEmpty()) {
+            System.out.println("No songs found in the " + genre + " genre.");
+            return;
+        }
+
+        System.out.println("Songs in the " + genre + " genre:");
+
+        for (int i = 0; i < matchingSongs.size(); i++) {
+            System.out.println((i + 1) + ". " + matchingSongs.get(i));
         }
     }
 

@@ -143,5 +143,23 @@ public class Playlist {
                 + " is out of bounds for playlist size " + songs.size());
         }
     }
+    
+    public LinkedChain<Song> getSongsByGenre(String genre) {
+        if (genre == null || genre.trim().isEmpty()) {
+            throw new IllegalArgumentException("Genre cannot be empty");
+        }
+
+        LinkedChain<Song> matchingSongs = new LinkedChain<Song>();
+
+        for (int i = 0; i < songs.size(); i++) {
+            Song song = songs.get(i);
+
+            if (song.getGenre().equalsIgnoreCase(genre.trim())) {
+                matchingSongs.addToEnd(song);
+            }
+        }
+
+        return matchingSongs;
+    }
 
 }
