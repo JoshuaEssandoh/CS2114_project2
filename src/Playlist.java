@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.Random;
 
 public class Playlist {
@@ -103,27 +102,31 @@ public class Playlist {
 
 
     public void shuffle(Random random) {
-        if (random == null) {
-            throw new IllegalArgumentException(
-                "Random generator can't be null");
-        }
-
-        ArrayList<Song> shuffledSongs = new ArrayList<Song>();
-
-        for (int i = 0; i < songs.size(); i++) {
-            shuffledSongs.add(songs.get(i));
-        }
-
-        Collections.shuffle(shuffledSongs, random);
-
-        LinkedChain<Song> shuffledChain = new LinkedChain<Song>();
-
-        for (Song song : shuffledSongs) {
-            shuffledChain.addToEnd(song);
-
-        }
-        songs = shuffledChain;
+    if (random == null) {
+        throw new IllegalArgumentException(
+            "Random generator can't be null");
     }
+
+    Song[] shuffledSongs =
+        songs.toArray(new Song[songs.size()]);
+
+    // Fisher-Yates: swap each song with a random earlier position.
+    for (int i = shuffledSongs.length - 1; i > 0; i--) {
+        int randomIndex = random.nextInt(i + 1);
+
+        Song temp = shuffledSongs[i];
+        shuffledSongs[i] = shuffledSongs[randomIndex];
+        shuffledSongs[randomIndex] = temp;
+    }
+
+    // Add to the front in reverse order to preserve the shuffled order.
+    LinkedChain<Song> shuffledChain = new LinkedChain<Song>();
+    for (int i = shuffledSongs.length - 1; i >= 0; i--) {
+        shuffledChain.add(shuffledSongs[i]);
+    }
+
+    songs = shuffledChain;
+}
 
 
     public LinkedChain<Song> getQueue() {
