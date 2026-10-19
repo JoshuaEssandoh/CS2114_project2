@@ -95,13 +95,19 @@ public class Song {
 
     // ----------------------------------------------------------
     /**
-     * Returns a summary of the song description.
+     * Returns a summary of the song description with MM:SS time formatting.
      * 
      * @return the formatted string
      */
     @Override
     public String toString() {
-        return title + " by " + artist + " [" + genre + "] (" + duration + "s)";
+        int minutes = duration / 60;
+        int remainingSeconds = duration % 60;
+        String formattedTime = String.format("%d:%02d", minutes,
+            remainingSeconds);
+
+        return title + " by " + artist + " [" + genre + "] (" + formattedTime
+            + ")";
     }
 
 

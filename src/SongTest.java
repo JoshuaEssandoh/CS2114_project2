@@ -112,13 +112,13 @@ public class SongTest extends TestCase {
 
     // ----------------------------------------------------------
     /**
-     * Tests the toString method.
+     * Tests the toString method with MM:SS formatting.
      */
     public void testToString() {
         String output = validSong.toString();
         assertTrue(output.contains("Bohemian Rhapsody"));
         assertTrue(output.contains("Queen"));
-        assertTrue(output.contains("355"));
+        assertTrue(output.contains("5:55"));
         assertTrue(output.contains("Rock"));
     }
 
